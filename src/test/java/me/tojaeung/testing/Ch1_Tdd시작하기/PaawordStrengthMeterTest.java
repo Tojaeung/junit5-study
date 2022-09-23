@@ -25,6 +25,7 @@ class PaawordStrengthMeterTest {
         assertStrength("ab12!@AB", PasswordStrength.STRONG);
     }
 
+    // 아래는 한가지 조건만 불합격하고 나머지는 모두 합격할때 경우이다. (PasswordStrength.NORMAL)
     @Test
     @DisplayName("비밀번호 길이가 8이하 경우")
     void meetsOtherCriteria_except_for_Length_Then_Normal() {
@@ -45,5 +46,21 @@ class PaawordStrengthMeterTest {
         assertStrength("ab!@Afewfwe", PasswordStrength.NORMAL);
     }
 
+    @Test
+    @DisplayName("입력값이 null인 경우")
+    void nullInput_Then_Invalid() {
+        assertStrength(null, PasswordStrength.INVALID);
+    }
 
+    @Test
+    @DisplayName("입력값이 빈문자열 인 경우")
+    void emptyInput_Then_Invalid() {
+        assertStrength("", PasswordStrength.INVALID);
+    }
+
+    @Test
+    @DisplayName("대문자를 포함하지 않는 경우")
+    void meetsOtherCriteria_except_for_Uppercase_Then_Normal() {
+        assertStrength("ab12!@df", PasswordStrength.NORMAL);
+    }
 }
