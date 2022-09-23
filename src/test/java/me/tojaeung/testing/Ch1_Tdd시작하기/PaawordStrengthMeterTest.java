@@ -81,5 +81,11 @@ class PaawordStrengthMeterTest {
         assertStrength("ABZBC", PasswordStrength.WEAK);
     }
 
+    @Test
+    @DisplayName("아무 조건도 만족하지 않는 경우")
+    void meetNoCriteria_Then_Weak() {
+        assertStrength("abc", PasswordStrength.WEAK);
+    }
+
 
 }
