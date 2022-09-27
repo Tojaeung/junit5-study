@@ -1,4 +1,4 @@
-package me.tojaeung.testing.Ch7_대역;
+package me.tojaeung.testing.Ch7_대역.자동이체;
 
 public class RegisterResult {
     private boolean success;
